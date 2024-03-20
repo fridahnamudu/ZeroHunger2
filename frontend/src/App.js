@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home'
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
-import Footer from './Components/Footer/Footer';
+// import Footer from './Components/Footer/Footer';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
 
 
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
       </BrowserRouter>
       
     </div>
