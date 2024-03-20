@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import '../css/Login.css'
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function SignUp() {
@@ -8,22 +10,21 @@ function SignUp() {
   const[last_name, setLastName] = useState("")
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
+  const[errors, setErrors] = useState("")
 
-  console.log(first_name)
-  console.log(last_name)
-  console.log(email)
-  console.log(password)
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3500/api/auth/signup', {first_name, last_name, email, password});
-      console.log('Login successful:', response.data);
+      toast.success(response.data.message);
+
     } catch (err) {
-      console.log(err)
+      setErrors(err.response.data.message)
     }
   };
   return (
     <div className='loginsignup'>
+      <ToastContainer />
       <div className="loginsignup-container">
         <h1>Sign Up</h1>
         <form onSubmit={handleSignUp}>
@@ -33,6 +34,7 @@ function SignUp() {
             <input type="email" placeholder='Email Address' value={email} onChange={(e)=>setEmail(e.target.value)}/>
             <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
           </div>
+          {errors && <p className="errors">{errors}</p>}
           <button type='submit'> Continue </button>
           <p className='loginsignup-login'> Already have an account? <span> Login here</span></p>
           <div className="loginsignup-agree">

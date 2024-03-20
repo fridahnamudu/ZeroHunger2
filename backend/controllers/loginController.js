@@ -30,7 +30,7 @@ const login = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
-        message: 'Password is invalid',
+        message: 'Password is incorrect',
       });
     }
 
