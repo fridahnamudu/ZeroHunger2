@@ -7,6 +7,13 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please fill in all fields',
+      });
+    }
+
     // Find the user by email
     const user = await User.findOne({ email });
 
@@ -23,7 +30,7 @@ const login = async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({
         success: false,
-        message: 'Password is invali',
+        message: 'Password is invalid',
       });
     }
 
