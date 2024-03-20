@@ -18,18 +18,34 @@ function Chatbot() {
         }
     ]);
 
-    const handleSend = async (message) => {
-        const newMessage = {
-            message: message,
-            sender: 'user',
-            direction: 'outgoing'
-        };
+    const handleSend = async () => {
+        // const newMessage = {
+        //     message: message,
+        //     sender: 'user',
+        //     direction: 'outgoing'
+        // };
 
-        const newMessages = [...messages, newMessage]; //all new messages + old messages
-        // update our messages state
-        setMessages(newMessages);
-        // typing messages indictator
-        setTyping(true);
+        // const newMessages = [...messages, newMessage]; //all new messages + old messages
+        // // update our messages state
+        // setMessages(newMessages);
+        // // typing messages indictator
+        // setTyping(true);
+        try {
+            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWZhMjlhYTI1NmY0YjU5MzZlZDkwMDgiLCJmaXJzdF9uYW1lIjoiZXZlIiwibGFzdF9uYW1lIjoibmplcmkiLCJlbWFpbCI6ImV2ZUBnbWFpbC5jb20iLCJjaGF0SGlzdG9yeSI6W10sImNyZWF0ZWRBdCI6IjIwMjQtMDMtMjBUMDA6MTE6MjIuNTI2WiIsInVwZGF0ZWRBdCI6IjIwMjQtMDMtMjBUMDA6MTE6MjIuNTI2WiIsIl9fdiI6MCwiaWF0IjoxNzEwODkzNTI1LCJleHAiOjE3MTE0OTgzMjV9.vGJxTkwNkBXRXiTw1ITmRGdKwt7DYW6NeFNBD5NlZIo';
+          const response = await axios.post(
+            'http://localhost:3500/api/chat',{input},
+            {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                }
+              }
+          );
+          setData(response.data);
+          console.log(response.data)
+        } catch (err) {
+        console.log(err)
+        }
 
         // await processMessageToGemini(newMessages);
 
@@ -103,7 +119,7 @@ function Chatbot() {
                                 return <Message key={i} model={message} />
                             })}
                         </MessageList>
-                        <MessageInput value={input} onChange={(e)=>setInput(e.toLowerCase())} placeholder='Type Message Here' onSend={chatRequest} />
+                        <MessageInput value={input} onChange={(e)=>setInput(e.toLowerCase())} placeholder='Type Message Here' onSend={handleSend} />
                     </ChatContainer>
                 </MainContainer>
             </div>
