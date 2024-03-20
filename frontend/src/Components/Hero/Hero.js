@@ -1,6 +1,6 @@
 import React from 'react'
 import './Hero.css'
-import donate from '../Assests/heroimg.jpg'
+import donate from '../../Assets/heroimg.jpg'
 
 function Hero() {
   return (

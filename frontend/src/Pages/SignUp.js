@@ -36,7 +36,7 @@ function SignUp() {
           </div>
           {errors && <p className="errors">{errors}</p>}
           <button type='submit'> Continue </button>
-          <p className='loginsignup-login'> Already have an account? <span> Login here</span></p>
+          <p className='loginsignup-login'> Already have an account? <span><a href='/login'>Login here</a></span></p>
           <div className="loginsignup-agree">
             <input type="checkbox" name='' id='' />
             <p>By continuing, I agree to the terms of use & privacy policy</p>
