@@ -1,0 +1,31 @@
+
+.Chatbot {
+    /* background-color:#f4a460; */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    /* height: 500px; */
+    width: 100%;
+    height: 60vh;
+    background:#d98c17;
+    padding-top: 100px;
+  }
+  
+  /* .Chatbot .messageList{
+    background-color: brown;
+    color: white;
+  } */
+
+
+ /* .message {
+  color: white;
+  background-color: purple;
+}
+
+.message.user {
+  background-color: brown;
+}
+  */

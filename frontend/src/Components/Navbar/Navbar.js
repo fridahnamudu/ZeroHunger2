@@ -11,6 +11,8 @@ function Navbar() {
     function handleClick(){
       setMenu('Home')
       navigate(`/`)
+      // setMenu('Chatbot')
+      // navigate('/Chatbot')
 
     }
 
@@ -25,7 +27,10 @@ function Navbar() {
         <div className="nav-login">
             <Link to='/login'> <button>Log In</button></Link>
             <Link to='/Signup'> <button>Sign Up</button></Link>
+            <Link to='/Chatbot'> <button>Chatbot</button></Link>
+
         </div>
+
 
     </div>
   )

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import '../css/Chatbot.css'
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+// import { styled } from '@chatscope/chat-ui-kit-react';
+
 
 const API_KEY = 'AIzaSyDNlOAlRcMxxL0JU5YR-KqMaGenYpMDu6w'
 
@@ -74,17 +76,17 @@ function Chatbot() {
 
     return (
         <div className='Chatbot'>
-            <div style={{position: "relative", height:"300px"}}>
+            <div style={{position: "relative", height:"50vh"}}>
                 <MainContainer>
                     <ChatContainer>
                         <MessageList typingIndicator={typing ? <TypingIndicator content="Gemini is typing" /> : null}
                         >
                             {messages.map((message, i) => {
-                                return <Message key={i} model={message} className='message'/>
-                            })}
-                        </MessageList>
-                        <MessageInput placeholder='Type Message Here' onSend={handleSend} />
-                    </ChatContainer>
+                                return <Message key={i} model={message} className={`message ${message.sender}`} />
+                                })}
+                                                        </MessageList>
+                            <MessageInput placeholder='Type Message Here' onSend={handleSend} placeholderColor='white' />                   
+                             </ChatContainer>
                 </MainContainer>
             </div>
         </div>
