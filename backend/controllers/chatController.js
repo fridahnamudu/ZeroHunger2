@@ -43,18 +43,19 @@ const chatController = async (req, res) => {
           ],
         },
       ];
-    } else {
-      chat_history = user.chatHistory.map((chat) => {
-        return {
-          role: chat.role,
-          parts: chat.parts.map((part) => {
-            return {
-              text: part.text,
-            };
-          }),
-        };
-      });
     }
+    // } else {
+    //   chat_history = user.chatHistory.map((chat) => {
+    //     return {
+    //       role: chat.role,
+    //       parts: chat.parts.map((part) => {
+    //         return {
+    //           text: part.text,
+    //         };
+    //       }),
+    //     };
+    //   });
+    // }
 
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
